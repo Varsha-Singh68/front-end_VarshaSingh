@@ -1,0 +1,66 @@
+
+body {
+  font-family:'Courier New', Courier, monospace;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+
+header {
+  background: #2c3e50;
+  color:#fff;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.blog-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap; 
+}
+
+
+.blog-post {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  flex: 1 1 30%;  
+  max-width: 30%;
+}
+
+.blog-post img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.blog-post h2 {
+  margin: 10px 0;
+  font-size: 20px;
+  color:brown;
+}
+
+.blog-post p {
+  color:cornflowerblue;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+@media (max-width: 900px) {
+  .blog-post {
+    flex: 1 1 45%;  
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-post {
+    flex: 1 1 100%; 
+    max-width: 100%;
+  }
+}
