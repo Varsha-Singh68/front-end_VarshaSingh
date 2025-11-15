@@ -1,0 +1,55 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+
+.box {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 18px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+
+.box ol {
+  list-style-type: decimal;       
+  list-style-position: inside;     
+  padding-left: 0;                
+  margin: 0;
+}
+
+
+.box ol li {
+  display: list-item;              
+  margin: 8px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+
+
+.box ol li::marker {
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.95);
+ 
+}
+
+
+.city1 { background-color: #ff6f61; }  
+.city2 { background-color: #27ae60; } 
+.city3 { background-color: #2980b9; }  
+.city4 { background-color: #8e44ad; }  
+.city5 { background-color: #f39c12; }  
