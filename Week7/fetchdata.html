@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simulated Fetch</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: #e8fff3;
+        text-align: center;
+        padding: 40px;
+    }
+    #output {
+        margin-top: 20px;
+        padding: 20px;
+        background: white;
+        display: inline-block;
+        min-width: 250px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        font-size: 18px;
+    }
+    button {
+        padding: 12px 20px;
+        border: none;
+        background: #28a745;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background: #1f7a33;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Simulated Data Fetch</h2>
+
+<button onclick="fetchData()">Fetch Data</button>
+
+<div id="output"></div>
+
+<script>
+function fetchData() {
+    document.getElementById("output").innerHTML = "⏳ Loading...";
+
+    let fakeServerPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                id: 101,
+                name: "Varsha",
+                course: "Frontend Development",
+                status: "Success"
+            });
+        }, 2000);
+    });
+
+    fakeServerPromise.then((data) => {
+        document.getElementById("output").innerHTML =
+            "<b>Server Response:</b><br><br>" +
+            "ID: " + data.id + "<br>" +
+            "Name: " + data.name + "<br>" +
+            "Course: " + data.course + "<br>" +
+            "Status: " + data.status;
+    });
+}
+</script>
+
+</body>
+</html>
