@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University Finder 🌍</title>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #fdf6e3; 
+        color: #333;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background: #008080; 
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 700px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        color: #fff;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+        color: #ff7f50; 
+    }
+
+    input {
+        width: 70%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        background: #ff7f50; 
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-left: 10px;
+    }
+
+    button:hover {
+        background: #e76b3b;
+        transform: scale(1.05);
+    }
+
+    .result {
+        margin-top: 25px;
+    }
+
+    .uni {
+        background: #e0f7f7; 
+        padding: 15px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .uni:hover {
+        transform: scale(1.02);
+        background: #c0eeee;
+    }
+
+    .uni a {
+        color: #008080;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .loader {
+        margin: 15px auto;
+        border: 6px solid #ccc;
+        border-top: 6px solid #ff7f50;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        display: none;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    .error {
+        text-align: center;
+        color: #ff4f4f;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>University Finder 🌍</h1>
+
+    <div style="text-align:center;">
+        <input type="text" id="countryInput" placeholder="Enter country name">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <div class="loader" id="loader"></div>
+    <div class="result" id="result"></div>
+    <div class="error" id="error"></div>
+</div>
+
+<script>
+document.getElementById("searchBtn").addEventListener("click", () => {
+    const country = document.getElementById("countryInput").value.trim();
+    const resultDiv = document.getElementById("result");
+    const errorDiv = document.getElementById("error");
+    const loader = document.getElementById("loader");
+
+    resultDiv.innerHTML = "";
+    errorDiv.textContent = "";
+
+    if(!country) {
+        errorDiv.textContent = "Please enter a country name.";
+        return;
+    }
+
+    loader.style.display = "block";
+
+    fetch(`http://universities.hipolabs.com/search?country=${country}`)
+        .then(response => response.json())
+        .then(data => {
+            loader.style.display = "none";
+
+            if(data.length === 0) {
+                errorDiv.textContent = "No universities found!";
+                return;
+            }
+
+            data.forEach(uni => {
+                const div = document.createElement("div");
+                div.className = "uni";
+                div.innerHTML = `
+                    <strong>${uni.name}</strong><br>
+                    ${uni["state-province"] ? "State: " + uni["state-province"] + "<br>" : ""}
+                    Website: <a href="${uni.web_pages[0]}" target="_blank">${uni.web_pages[0]}</a>
+                `;
+                resultDiv.appendChild(div);
+            });
+        })
+        .catch(err => {
+            loader.style.display = "none";
+            errorDiv.textContent = "Error fetching data. Try again!";
+            console.error(err);
+        });
+});
+</script>
+
+</body>
+</html>
