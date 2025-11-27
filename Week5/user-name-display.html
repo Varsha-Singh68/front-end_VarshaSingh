@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding-top: 80px;
+        }
+        h2 {
+            color: #333;
+            background: white;
+            width: 300px;
+            margin: auto;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Click to Enter Your Name</h1>
+<button onclick="welcomeUser()">Start</button>
+
+<script>
+function welcomeUser() {
+    let name = prompt("Enter your name:");
+    alert("Welcome, " + name + "!");
+    document.write("<h2>Welcome, " + name + "!</h2>");
+}
+</script>
+
+</body>
+</html>

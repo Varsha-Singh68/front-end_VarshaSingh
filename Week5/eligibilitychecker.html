@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eligibility Checker</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e9f5ff;
+            text-align: center;
+            padding-top: 70px;
+        }
+        .box {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background: #28a745;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1e7e34;
+        }
+        h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Age Eligibility Checker</h2>
+    <button onclick="checkEligibility()">Check Age</button>
+</div>
+
+<script>
+function checkEligibility() {
+    let age = prompt("Enter your age:");
+
+    let message = (age >= 18) ? 
+                  "You are Eligible!" : 
+                  "You are NOT Eligible.";
+
+    alert(message);
+    document.write("<h3>" + message + "</h3>");
+}
+</script>
+
+</body>
+</html>
