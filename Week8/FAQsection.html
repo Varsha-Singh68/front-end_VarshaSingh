@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FAQ Toggle</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        padding: 40px;
+    }
+    .faq-box {
+        width: 600px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    }
+    h2 {
+        text-align: center;
+        color: #7a005a;
+        margin-bottom: 20px;
+    }
+    .question {
+        font-weight: bold;
+        padding: 12px;
+        background: #ff6f91;
+        color: white;
+        margin-top: 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .question:hover {
+        background: #ff4974;
+    }
+    .answer {
+        padding: 12px;
+        background: #ffe3ec;
+        border-left: 5px solid #ff6f91;
+        display: none;
+        border-radius: 6px;
+        margin-top: 5px;
+        color: #4a0031;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="faq-box">
+    <h2>FAQ Section</h2>
+
+    <div class="question">What is JavaScript?</div>
+    <div class="answer">JavaScript is a programming language used to make web pages interactive.</div>
+
+    <div class="question">What is jQuery?</div>
+    <div class="answer">jQuery is a JavaScript library that simplifies DOM manipulation.</div>
+
+    <div class="question">Why do we use slideToggle()?</div>
+    <div class="answer">It gives smooth open/close animations for content.</div>
+</div>
+
+<script>
+$(".question").click(function() {
+    $(this).next(".answer").slideToggle(300);
+});
+</script>
+
+</body>
+</html>

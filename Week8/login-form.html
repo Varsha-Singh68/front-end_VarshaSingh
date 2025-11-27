@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form Fade Effect</title>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            background-color: #eee1ff; 
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        .container {
+            width: 350px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4a148c;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #7b1fa2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #4a0072;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            display: none;
+            text-align: center;
+            color: white;
+            background: #8e24aa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login Form</h2>
+
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button id="loginBtn">Login</button>
+
+        <div id="message">Login Successful!</div>
+    </div>
+
+    <script>
+        $("#loginBtn").click(function () {
+
+            $("#message").fadeIn(600);  
+
+            setTimeout(() => {
+                $("#message").fadeOut(600); 
+            }, 2000);
+
+        });
+    </script>
+
+</body>
+</html>
