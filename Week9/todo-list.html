@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced To-Do List</title>
+    <style>
+        body {
+            background: #f3e5f5; 
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        .todo-container {
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #8e24aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        button:hover {
+            background: #6a1b9a;
+        }
+
+        .item {
+            padding: 10px;
+            background: #fbe9f7;
+            margin-top: 12px;
+            border-radius: 6px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;       
+        }
+
+       
+        .item span {
+            flex-grow: 1;
+            word-break: break-word;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+       
+        .controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .controls button {
+            background: #555;
+            padding: 6px 8px;
+        }
+
+        .controls button:hover {
+            background: #222;
+        }
+    </style>
+</head>
+<body>
+
+<div class="todo-container">
+    <h2>Advanced To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter Task...">
+    <button onclick="addTask()">Add</button>
+
+    <div id="list"></div>
+</div>
+
+<script>
+function addTask() {
+    let text = document.getElementById("taskInput").value;
+    if (text === "") return;
+
+    let div = document.createElement("div");
+    div.className = "item";
+
+    div.innerHTML = `
+        <input type="checkbox" onclick="toggleComplete(this)">
+        <span>${text}</span>
+
+        <div class="controls">
+            <button onclick="moveUp(this)">⬆</button>
+            <button onclick="moveDown(this)">⬇</button>
+            <button onclick="deleteItem(this)">❌</button>
+        </div>
+    `;
+
+    document.getElementById("list").appendChild(div);
+    document.getElementById("taskInput").value = "";
+}
+
+function toggleComplete(checkbox) {
+    let text = checkbox.parentElement.querySelector("span");
+    checkbox.checked 
+        ? text.classList.add("completed") 
+        : text.classList.remove("completed");
+}
+
+function deleteItem(btn) {
+    btn.parentElement.parentElement.remove();
+}
+
+function moveUp(btn) {
+    let item = btn.parentElement.parentElement;
+    let prev = item.previousElementSibling;
+    if (prev) item.parentNode.insertBefore(item, prev);
+}
+
+function moveDown(btn) {
+    let item = btn.parentElement.parentElement;
+    let next = item.nextElementSibling;
+    if (next) item.parentNode.insertBefore(next, item);
+}
+</script>
+
+</body>
+</html>

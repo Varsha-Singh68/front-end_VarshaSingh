@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chessboard Generator</title>
+
+    <style>
+        body {
+            background: #e8eaf6; 
+            font-family: Arial;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8, 60px);
+            margin: auto;
+            border: 5px solid #1a237e;
+            width: 480px;
+        }
+
+        .cell {
+            width: 60px;
+            height: 60px;
+        }
+
+        .black {
+            background: #283593;
+        }
+
+        .white {
+            background: #c5cae9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Dynamic Chessboard (8×8)</h2>
+<button onclick="createBoard()">Generate Board</button>
+
+<div id="board"></div>
+
+<script>
+function createBoard() {
+    let board = document.getElementById("board");
+    board.innerHTML = ""; 
+
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+
+            if ((row + col) % 2 === 0) {
+                cell.classList.add("white");
+            } else {
+                cell.classList.add("black");
+            }
+
+            board.appendChild(cell);
+        }
+    }
+}
+</script>
+
+</body>
+</html>
